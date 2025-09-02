@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Local SEO Health Check — Mockup</title>
+  <title>Bermondish — Local SEO Health Check</title>
   <meta name="description" content="Lightweight mockup of a local SEO assessment tool with scoring. One file, zero backend." />
   <style>
     :root{
@@ -29,6 +29,21 @@
     .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);font-size:12px;color:var(--muted)}
     .score{font-size:40px;font-weight:800}
     details{border:var(--border);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.02)}
+    /* section accent + row status colors */
+    details.section{position:relative;border-color:rgba(255,255,255,.12)}
+    details.section::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:4px;border-radius:12px 0 0 12px;background:var(--section,rgba(255,255,255,.08))}
+    details.section summary{color:var(--text)}
+    details.section table thead th{color:var(--text)}
+    tr.status-good{background:rgba(16,185,129,.08)}
+    tr.status-warn{background:rgba(234,179,8,.08)}
+    tr.status-bad{background:rgba(239,68,68,.08)}
+    tr.status-good td:last-child select{border-color:rgba(16,185,129,.35)}
+    tr.status-warn td:last-child select{border-color:rgba(234,179,8,.35)}
+    tr.status-bad td:last-child select{border-color:rgba(239,68,68,.35)}
+    /* per-section accent colors */
+    details.section[data-accent="core"]{--section:#22d3ee;background:#0d2430;border-color:rgba(34,211,238,.25)}
+    details.section[data-accent="visuals"]{--section:#7c3aed;background:#221632;border-color:rgba(124,58,237,.25)}
+    details.section[data-accent="social"]{--section:#10b981;background:#10251c;border-color:rgba(16,185,129,.25)}
     summary{cursor:pointer;font-weight:700}
     table{width:100%;border-collapse:collapse;margin-top:8px}
     th,td{padding:10px 8px;border-bottom:1px dashed rgba(255,255,255,.06);text-align:left;font-size:14px}
@@ -39,11 +54,22 @@
     .bad{background:rgba(239,68,68,.15);color:#ffd6d6;border:1px solid rgba(239,68,68,.35)}
     footer{max-width:960px;margin:10px auto 60px;padding:0 16px;color:var(--muted);font-size:13px}
   </style>
+  <link rel="canonical" href="https://bermondish-boop.github.io/local-seo-health-check/" />
+  <meta name="theme-color" content="#0b0f14" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Bermondish" />
+  <meta property="og:title" content="Bermondish — Local SEO Health Check" />
+  <meta property="og:description" content="Quick, no-login assessment of your local SEO essentials. Score your profile in minutes." />
+  <meta property="og:url" content="https://bermondish-boop.github.io/local-seo-health-check/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bermondish — Local SEO Health Check" />
+  <meta name="twitter:description" content="Quick, no-login assessment of your local SEO essentials. Score your profile in minutes." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f14'/%3E%3Cpath d='M22 16h16a10 10 0 010 20H22zM22 36h17a9 9 0 010 18H22z' fill='%2322d3ee'/%3E%3C/svg%3E" />
 </head>
 <body>
   <header>
-    <h1>Local SEO Health Check <span class="pill">mockup</span></h1>
-    <p class="sub">Early preview: a simple scoring pass across a few criteria. We’ll expand after you approve the layout/flow.</p>
+    <h1>Local SEO Health Check <span class="pill">by Bermondish</span></h1>
+    <p class="sub">Quick, no‑login assessment of your local SEO essentials. Score your profile in minutes.</p>
   </header>
 
   <main class="grid">
@@ -61,7 +87,7 @@
           </div>
         </div>
 
-        <details open>
+        <details class="section" data-accent="core" open>
           <summary>🔑 Core Business Information</summary>
           <table>
             <thead>
@@ -102,7 +128,7 @@
           </table>
         </details>
 
-        <details open>
+        <details class="section" data-accent="visuals" open>
           <summary>📸 Visuals & Media</summary>
           <table>
             <thead><tr><th>Item</th><th>Status</th></tr></thead>
@@ -131,7 +157,7 @@
           </table>
         </details>
 
-        <details open>
+        <details class="section" data-accent="social" open>
           <summary>⭐ Social Proof & Engagement</summary>
           <table>
             <thead><tr><th>Item</th><th>Status</th></tr></thead>
@@ -188,9 +214,7 @@
     </section>
   </main>
 
-  <footer>
-    Mockup build — data saved locally in your browser. We’ll expand categories once layout is approved.
-  </footer>
+  <footer>© 2025 Bermondish — one‑file app. Data stays in your browser. Share this link with your team or clients.</footer>
 
   <script>
     const els = {
@@ -227,6 +251,18 @@
       return {text:'Weak', cls:'bad'};
     }
 
+    function updateRowColors(){
+      document.querySelectorAll('details select').forEach(sel => {
+        const tr = sel.closest('tr');
+        if(!tr) return;
+        tr.classList.remove('status-good','status-warn','status-bad');
+        const val = Number(sel.value);
+        if(val >= 0.99) tr.classList.add('status-good');
+        else if(val >= 0.49) tr.classList.add('status-warn');
+        else tr.classList.add('status-bad');
+      });
+    }
+
     function scoreNow(){
       const s = computeScore();
       els.score.textContent = s;
@@ -253,7 +289,10 @@
       const items = readAll();
       items.unshift(item);
       writeAll(items);
-      renderList();
+      document.querySelectorAll('details select').forEach(sel => sel.addEventListener('change', updateRowColors));
+    updateRowColors();
+
+    renderList();
     }
 
     function removeItem(id){
@@ -279,6 +318,7 @@
       document.querySelectorAll('details select').forEach(sel => sel.value = '1');
       els.bizName.value=''; els.website.value='';
       els.scoreWrap.style.display='none';
+      updateRowColors();
     }
 
     function renderList(){
