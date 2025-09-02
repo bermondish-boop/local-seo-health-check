@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local SEO Health Check — Mockup</title>
+  <meta name="description" content="Lightweight mockup of a local SEO assessment tool with scoring. One file, zero backend." />
+  <style>
+    :root{
+      --bg:#0b0f14;--card:#121723;--muted:#98a2b3;--text:#e6edf3;--accent:#22d3ee;--accent2:#7c3aed;--ok:#10b981;--warn:#eab308;--bad:#ef4444;
+      --radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35);--border:1px solid rgba(255,255,255,.06)
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 600px at 10% -10%,rgba(34,211,238,.22),transparent),radial-gradient(1000px 500px at 120% 10%,rgba(124,58,237,.18),transparent),var(--bg);color:var(--text)}
+    header{max-width:960px;margin:40px auto 20px;padding:0 16px}
+    h1{font-size:36px;margin:0 0 6px}
+    .sub{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:960px;margin:0 auto;padding:16px}
+    @media(min-width:900px){.grid{grid-template-columns:1.1fr .9fr}}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card .inner{padding:18px}
+    label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
+    input, textarea, select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0f1420;color:var(--text);outline:none}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .btn{cursor:pointer;user-select:none;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(34,211,238,.12),rgba(34,211,238,.08));color:#fff;font-weight:600}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.ghost{background:transparent;border-color:rgba(255,255,255,.06);color:var(--muted)}
+    .stack{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);font-size:12px;color:var(--muted)}
+    .score{font-size:40px;font-weight:800}
+    details{border:var(--border);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.02)}
+    summary{cursor:pointer;font-weight:700}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:10px 8px;border-bottom:1px dashed rgba(255,255,255,.06);text-align:left;font-size:14px}
+    th{color:var(--muted);font-weight:600}
+    .badge{font-size:12px;padding:6px 10px;border-radius:999px}
+    .ok{background:rgba(16,185,129,.15);color:#c4f6e8;border:1px solid rgba(16,185,129,.35)}
+    .avg{background:rgba(234,179,8,.15);color:#fff2cc;border:1px solid rgba(234,179,8,.35)}
+    .bad{background:rgba(239,68,68,.15);color:#ffd6d6;border:1px solid rgba(239,68,68,.35)}
+    footer{max-width:960px;margin:10px auto 60px;padding:0 16px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Local SEO Health Check <span class="pill">mockup</span></h1>
+    <p class="sub">Early preview: a simple scoring pass across a few criteria. We’ll expand after you approve the layout/flow.</p>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <div class="inner">
+        <h2 style="margin:0 0 12px">Business Profile</h2>
+        <div class="row">
+          <div>
+            <label>Business name</label>
+            <input id="bizName" placeholder="e.g. Bermondish Cafe" />
+          </div>
+          <div>
+            <label>Website</label>
+            <input id="website" placeholder="e.g. https://example.com" />
+          </div>
+        </div>
+
+        <details open>
+          <summary>🔑 Core Business Information</summary>
+          <table>
+            <thead>
+              <tr><th>Item</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Legal name (no keyword stuffing)</td>
+                <td>
+                  <select data-weight="8">
+                    <option value="0">Missing / inaccurate</option>
+                    <option value="0.5">Partially compliant</option>
+                    <option value="1" selected>Accurate</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Primary category accurate</td>
+                <td>
+                  <select data-weight="10">
+                    <option value="0">Wrong / generic</option>
+                    <option value="0.5">Okay</option>
+                    <option value="1" selected>Best match</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>NAP consistency (Name, Address, Phone)</td>
+                <td>
+                  <select data-weight="10">
+                    <option value="0">Inconsistent</option>
+                    <option value="0.5">Minor mismatches</option>
+                    <option value="1" selected>Consistent</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </details>
+
+        <details open>
+          <summary>📸 Visuals & Media</summary>
+          <table>
+            <thead><tr><th>Item</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Recent photos (exterior, interior, team)</td>
+                <td>
+                  <select data-weight="6">
+                    <option value="0">None / very old</option>
+                    <option value="0.5">Some / mixed</option>
+                    <option value="1" selected>High-quality & recent</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Logo & cover photo present</td>
+                <td>
+                  <select data-weight="4">
+                    <option value="0">Missing</option>
+                    <option value="0.5">Low quality</option>
+                    <option value="1" selected>On brand</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </details>
+
+        <details open>
+          <summary>⭐ Social Proof & Engagement</summary>
+          <table>
+            <thead><tr><th>Item</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Reviews (quantity + recency)</td>
+                <td>
+                  <select data-weight="10">
+                    <option value="0">Few/old</option>
+                    <option value="0.5">Okay</option>
+                    <option value="1" selected>Strong & recent</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Responses to reviews</td>
+                <td>
+                  <select data-weight="5">
+                    <option value="0">Rarely</option>
+                    <option value="0.5">Sometimes</option>
+                    <option value="1" selected>Responds consistently</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </details>
+
+        <div class="stack" style="margin-top:14px">
+          <button class="btn" onclick="scoreNow()">Calculate score</button>
+          <button class="btn ghost" onclick="saveAssessment()">Save</button>
+          <button class="btn ghost" onclick="resetForm()">Clear</button>
+        </div>
+
+        <div id="scoreWrap" style="margin-top:14px;display:none">
+          <div class="stack">
+            <div class="score" id="score">85</div>
+            <span class="badge ok" id="grade">Excellent</span>
+            <span class="pill" id="why">— prototype weighting: Core (28), Visuals (10), Social (15)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="inner">
+        <h2 style="margin:0 0 12px">Saved Assessments</h2>
+        <div class="stack" style="margin-bottom:10px">
+          <button class="btn ghost" onclick="exportCSV()">Export CSV</button>
+          <button class="btn ghost" onclick="clearAll()">Clear all</button>
+        </div>
+        <div id="list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Mockup build — data saved locally in your browser. We’ll expand categories once layout is approved.
+  </footer>
+
+  <script>
+    const els = {
+      bizName: document.getElementById('bizName'),
+      website: document.getElementById('website'),
+      list: document.getElementById('list'),
+      scoreWrap: document.getElementById('scoreWrap'),
+      score: document.getElementById('score'),
+      grade: document.getElementById('grade'),
+      why: document.getElementById('why'),
+    }
+
+    const STORAGE_KEY = 'local_seo_mock_v1';
+
+    function collectCriteria(){
+      // all <select> elements within details blocks represent criteria
+      return Array.from(document.querySelectorAll('details select')).map(sel => ({
+        weight: Number(sel.dataset.weight || 1),
+        value: Number(sel.value || 0)
+      }));
+    }
+
+    function computeScore(){
+      const crit = collectCriteria();
+      const max = crit.reduce((s,c)=> s + c.weight, 0);
+      const got = crit.reduce((s,c)=> s + (c.value * c.weight), 0);
+      const pct = Math.round((got / max) * 100);
+      return pct;
+    }
+
+    function gradeFromScore(s){
+      if(s >= 85) return {text:'Excellent', cls:'ok'};
+      if(s >= 60) return {text:'Needs Work', cls:'avg'};
+      return {text:'Weak', cls:'bad'};
+    }
+
+    function scoreNow(){
+      const s = computeScore();
+      els.score.textContent = s;
+      const g = gradeFromScore(s);
+      els.grade.textContent = g.text;
+      els.grade.className = 'badge ' + g.cls;
+      els.why.textContent = '— prototype weighting across Core, Visuals, Social';
+      els.scoreWrap.style.display = 'block';
+    }
+
+    function readAll(){
+      try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }catch{ return [] }
+    }
+    function writeAll(items){ localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); }
+
+    function saveAssessment(){
+      const item = {
+        id: crypto.randomUUID(),
+        name: els.bizName.value.trim() || 'Untitled business',
+        website: els.website.value.trim(),
+        score: computeScore(),
+        createdAt: new Date().toISOString()
+      };
+      const items = readAll();
+      items.unshift(item);
+      writeAll(items);
+      renderList();
+    }
+
+    function removeItem(id){
+      const items = readAll().filter(x => x.id !== id);
+      writeAll(items); renderList();
+    }
+
+    function exportCSV(){
+      const items = readAll();
+      if(!items.length){ alert('No assessments yet.'); return }
+      const header = ['Created','Business','Website','Score'];
+      const rows = items.map(x => [x.createdAt, x.name, x.website, x.score]);
+      const csv = [header, ...rows].map(r => r.map(v => '"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+      const blob = new Blob([csv], {type:'text/csv'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'seo-assessments.csv'; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function clearAll(){ if(confirm('Delete all saved assessments?')){ writeAll([]); renderList(); } }
+
+    function resetForm(){
+      document.querySelectorAll('details select').forEach(sel => sel.value = '1');
+      els.bizName.value=''; els.website.value='';
+      els.scoreWrap.style.display='none';
+    }
+
+    function renderList(){
+      const items = readAll();
+      if(!items.length){ els.list.innerHTML = `<div class="pill">No assessments yet — save one after scoring.</div>`; return }
+      els.list.innerHTML = `
+      <table>
+        <thead>
+          <tr><th>Business</th><th>Website</th><th>Score</th><th>When</th><th></th></tr>
+        </thead>
+        <tbody>
+          ${items.map(x => `
+            <tr>
+              <td><strong>${x.name}</strong></td>
+              <td>${x.website ? `<a href="${x.website}" class="pill">link</a>` : '—'}</td>
+              <td>${x.score}</td>
+              <td>${new Date(x.createdAt).toLocaleString()}</td>
+              <td><button class="btn ghost" onclick="removeItem('${x.id}')">Delete</button></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>`;
+    }
+
+    renderList();
+  </script>
+</body>
+</html>
