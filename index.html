@@ -4,56 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bermondish — Local SEO Health Check</title>
-  <meta name="description" content="Lightweight mockup of a local SEO assessment tool with scoring. One file, zero backend." />
-  <style>
-    :root{
-      --bg:#0b0f14;--card:#121723;--muted:#98a2b3;--text:#e6edf3;--accent:#22d3ee;--accent2:#7c3aed;--ok:#10b981;--warn:#eab308;--bad:#ef4444;
-      --radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35);--border:1px solid rgba(255,255,255,.06)
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 600px at 10% -10%,rgba(34,211,238,.22),transparent),radial-gradient(1000px 500px at 120% 10%,rgba(124,58,237,.18),transparent),var(--bg);color:var(--text)}
-    header{max-width:960px;margin:40px auto 20px;padding:0 16px}
-    h1{font-size:36px;margin:0 0 6px}
-    .sub{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:960px;margin:0 auto;padding:16px}
-    @media(min-width:900px){.grid{grid-template-columns:1.1fr .9fr}}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .card .inner{padding:18px}
-    label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
-    input, textarea, select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0f1420;color:var(--text);outline:none}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .btn{cursor:pointer;user-select:none;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(34,211,238,.12),rgba(34,211,238,.08));color:#fff;font-weight:600}
-    .btn:hover{transform:translateY(-1px)}
-    .btn.ghost{background:transparent;border-color:rgba(255,255,255,.06);color:var(--muted)}
-    .stack{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);font-size:12px;color:var(--muted)}
-    .score{font-size:40px;font-weight:800}
-    details{border:var(--border);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.02)}
-    /* section accent + row status colors */
-    details.section{position:relative;border-color:rgba(255,255,255,.12)}
-    details.section::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:4px;border-radius:12px 0 0 12px;background:var(--section,rgba(255,255,255,.08))}
-    details.section summary{color:var(--text)}
-    details.section table thead th{color:var(--text)}
-    tr.status-good{background:rgba(16,185,129,.08)}
-    tr.status-warn{background:rgba(234,179,8,.08)}
-    tr.status-bad{background:rgba(239,68,68,.08)}
-    tr.status-good td:last-child select{border-color:rgba(16,185,129,.35)}
-    tr.status-warn td:last-child select{border-color:rgba(234,179,8,.35)}
-    tr.status-bad td:last-child select{border-color:rgba(239,68,68,.35)}
-    /* per-section accent colors */
-    details.section[data-accent="core"]{--section:#22d3ee;background:#0d2430;border-color:rgba(34,211,238,.25)}
-    details.section[data-accent="visuals"]{--section:#7c3aed;background:#221632;border-color:rgba(124,58,237,.25)}
-    details.section[data-accent="social"]{--section:#10b981;background:#10251c;border-color:rgba(16,185,129,.25)}
-    summary{cursor:pointer;font-weight:700}
-    table{width:100%;border-collapse:collapse;margin-top:8px}
-    th,td{padding:10px 8px;border-bottom:1px dashed rgba(255,255,255,.06);text-align:left;font-size:14px}
-    th{color:var(--muted);font-weight:600}
-    .badge{font-size:12px;padding:6px 10px;border-radius:999px}
-    .ok{background:rgba(16,185,129,.15);color:#c4f6e8;border:1px solid rgba(16,185,129,.35)}
-    .avg{background:rgba(234,179,8,.15);color:#fff2cc;border:1px solid rgba(234,179,8,.35)}
-    .bad{background:rgba(239,68,68,.15);color:#ffd6d6;border:1px solid rgba(239,68,68,.35)}
-    footer{max-width:960px;margin:10px auto 60px;padding:0 16px;color:var(--muted);font-size:13px}
-  </style>
+  <meta name="description" content="Quick, no-login assessment of your local SEO essentials. Score your profile in minutes." />
+
+  <!-- Share-ready meta -->
   <link rel="canonical" href="https://bermondish-boop.github.io/local-seo-health-check/" />
   <meta name="theme-color" content="#0b0f14" />
   <meta property="og:type" content="website" />
@@ -65,11 +18,68 @@
   <meta name="twitter:title" content="Bermondish — Local SEO Health Check" />
   <meta name="twitter:description" content="Quick, no-login assessment of your local SEO essentials. Score your profile in minutes." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0f14'/%3E%3Cpath d='M22 16h16a10 10 0 010 20H22zM22 36h17a9 9 0 010 18H22z' fill='%2322d3ee'/%3E%3C/svg%3E" />
+
+  <style>
+    :root{
+      --bg:#0b0f14;--card:#121723;--muted:#98a2b3;--text:#e6edf3;--accent:#22d3ee;--accent2:#7c3aed;--ok:#10b981;--warn:#eab308;--bad:#ef4444;
+      --radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35);--border:1px solid rgba(255,255,255,.06)
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;background:
+      radial-gradient(1200px 600px at 10% -10%,rgba(34,211,238,.22),transparent),
+      radial-gradient(1000px 500px at 120% 10%,rgba(124,58,237,.18),transparent),
+      var(--bg);color:var(--text)}
+    header{max-width:960px;margin:40px auto 20px;padding:0 16px}
+    h1{font-size:36px;margin:0 0 6px}
+    .sub{color:var(--text)}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:960px;margin:0 auto;padding:16px}
+    @media(min-width:900px){.grid{grid-template-columns:1.1fr .9fr}}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card .inner{padding:18px}
+    label{display:block;font-size:14px;color:var(--text);margin-bottom:6px}
+    input, textarea, select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0f1420;color:var(--text);outline:none}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .btn{cursor:pointer;user-select:none;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(34,211,238,.12),rgba(34,211,238,.08));color:#fff;font-weight:600}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.ghost{background:transparent;border-color:rgba(255,255,255,.06);color:var(--text)}
+    .stack{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);font-size:12px;color:var(--text)}
+    .score{font-size:40px;font-weight:800}
+
+    /* Section blocks */
+    details{border:var(--border);border-radius:12px;padding:10px 12px;background:rgba(255,255,255,.02)}
+    details.section{position:relative;border-color:rgba(255,255,255,.12)}
+    details.section::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:4px;border-radius:12px 0 0 12px;background:var(--section,rgba(255,255,255,.08))}
+    details.section summary{color:var(--text)}
+    details.section table thead th{color:var(--text)}
+    /* Solid backgrounds per section (white text everywhere) */
+    details.section[data-accent="core"]   {--section:#22d3ee;background:#0d2430;border-color:rgba(34,211,238,.25)}
+    details.section[data-accent="visuals"]{--section:#7c3aed;background:#221632;border-color:rgba(124,58,237,.25)}
+    details.section[data-accent="social"] {--section:#10b981;background:#10251c;border-color:rgba(16,185,129,.25)}
+
+    /* Row status colors */
+    tr.status-good{background:rgba(16,185,129,.10)}
+    tr.status-warn{background:rgba(234,179,8,.12)}
+    tr.status-bad{background:rgba(239,68,68,.10)}
+    tr.status-good td:last-child select{border-color:rgba(16,185,129,.35)}
+    tr.status-warn td:last-child select{border-color:rgba(234,179,8,.35)}
+    tr.status-bad td:last-child select{border-color:rgba(239,68,68,.35)}
+
+    summary{cursor:pointer;font-weight:700}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    th,td{padding:10px 8px;border-bottom:1px dashed rgba(255,255,255,.06);text-align:left;font-size:14px}
+    th{color:var(--text);font-weight:600}
+    .badge{font-size:12px;padding:6px 10px;border-radius:999px}
+    .ok{background:rgba(16,185,129,.15);color:#c4f6e8;border:1px solid rgba(16,185,129,.35)}
+    .avg{background:rgba(234,179,8,.15);color:#fff2cc;border:1px solid rgba(234,179,8,.35)}
+    .bad{background:rgba(239,68,68,.15);color:#ffd6d6;border:1px solid rgba(239,68,68,.35)}
+    footer{max-width:960px;margin:10px auto 60px;padding:0 16px;color:var(--text);font-size:13px}
+  </style>
 </head>
 <body>
   <header>
     <h1>Local SEO Health Check <span class="pill">by Bermondish</span></h1>
-    <p class="sub">Quick, no‑login assessment of your local SEO essentials. Score your profile in minutes.</p>
+    <p class="sub">Quick, no-login assessment of your local SEO essentials. Score your profile in minutes.</p>
   </header>
 
   <main class="grid">
@@ -214,7 +224,7 @@
     </section>
   </main>
 
-  <footer>© 2025 Bermondish — one‑file app. Data stays in your browser. Share this link with your team or clients.</footer>
+  <footer>© 2025 Bermondish — one-file app. Data stays in your browser. Share this link with your team or clients.</footer>
 
   <script>
     const els = {
@@ -225,12 +235,12 @@
       score: document.getElementById('score'),
       grade: document.getElementById('grade'),
       why: document.getElementById('why'),
-    }
+    };
 
     const STORAGE_KEY = 'local_seo_mock_v1';
 
     function collectCriteria(){
-      // all <select> elements within details blocks represent criteria
+      // All <select> elements within details blocks represent criteria
       return Array.from(document.querySelectorAll('details select')).map(sel => ({
         weight: Number(sel.dataset.weight || 1),
         value: Number(sel.value || 0)
@@ -241,8 +251,7 @@
       const crit = collectCriteria();
       const max = crit.reduce((s,c)=> s + c.weight, 0);
       const got = crit.reduce((s,c)=> s + (c.value * c.weight), 0);
-      const pct = Math.round((got / max) * 100);
-      return pct;
+      return Math.round((got / max) * 100);
     }
 
     function gradeFromScore(s){
@@ -289,15 +298,13 @@
       const items = readAll();
       items.unshift(item);
       writeAll(items);
-      document.querySelectorAll('details select').forEach(sel => sel.addEventListener('change', updateRowColors));
-    updateRowColors();
-
-    renderList();
+      renderList();
     }
 
     function removeItem(id){
       const items = readAll().filter(x => x.id !== id);
-      writeAll(items); renderList();
+      writeAll(items);
+      renderList();
     }
 
     function exportCSV(){
@@ -305,14 +312,21 @@
       if(!items.length){ alert('No assessments yet.'); return }
       const header = ['Created','Business','Website','Score'];
       const rows = items.map(x => [x.createdAt, x.name, x.website, x.score]);
-      const csv = [header, ...rows].map(r => r.map(v => '"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+      const csv = [header, ...rows]
+        .map(r => r.map(v => '"' + String(v).replace(/"/g,'""') + '"').join(','))
+        .join('\n');
       const blob = new Blob([csv], {type:'text/csv'});
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = 'seo-assessments.csv'; a.click();
+      const a = document.createElement('a');
+      a.href = url; a.download = 'seo-assessments.csv'; a.click();
       URL.revokeObjectURL(url);
     }
 
-    function clearAll(){ if(confirm('Delete all saved assessments?')){ writeAll([]); renderList(); } }
+    function clearAll(){
+      if(confirm('Delete all saved assessments?')){
+        writeAll([]); renderList();
+      }
+    }
 
     function resetForm(){
       document.querySelectorAll('details select').forEach(sel => sel.value = '1');
@@ -323,7 +337,10 @@
 
     function renderList(){
       const items = readAll();
-      if(!items.length){ els.list.innerHTML = `<div class="pill">No assessments yet — save one after scoring.</div>`; return }
+      if(!items.length){
+        els.list.innerHTML = `<div class="pill">No assessments yet — save one after scoring.</div>`;
+        return;
+      }
       els.list.innerHTML = `
       <table>
         <thead>
@@ -342,6 +359,11 @@
         </tbody>
       </table>`;
     }
+
+    // Initialize row colors and listeners on load
+    document.querySelectorAll('details select')
+      .forEach(sel => sel.addEventListener('change', updateRowColors));
+    updateRowColors();
 
     renderList();
   </script>
